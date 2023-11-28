@@ -1,3 +1,6 @@
 .idea
 /venv
 .env
+image_download.py
+image.jpg
+subproject-NASA-APOD

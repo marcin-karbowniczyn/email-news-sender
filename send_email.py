@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+print(os.getenv('PASSWORD_GMAIL'))
 
 
 def send_email(message):
@@ -13,13 +14,8 @@ def send_email(message):
     password = os.getenv('PASSWORD_GMAIL')
 
     reciever = 'marcin.karbowniczyn@gmail.com'
-    message_to_send = f"""\
-Subject: Daily News Digest
-
-{message}
-"""
 
     context = ssl.create_default_context()  # Nie wiem co to, mogę później poszukać
     with smtplib.SMTP_SSL(host, port, context=context) as server:  # Musimy dać "as" bo otwieramy funkcję która zwraca zmienną na której są metody
         server.login(username, password)
-        server.sendmail(username, reciever, message_to_send)
+        server.sendmail(username, reciever, message)
